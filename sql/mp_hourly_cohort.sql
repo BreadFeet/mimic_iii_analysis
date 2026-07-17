@@ -14,4 +14,4 @@ select
 	, generate_series(-24, ceil(extract(epoch from (outtime - intime))/60.0/60.0)::INTEGER) as hr
 from mp_cohort
 where excluded = 0
-order by subject_id, hadm_id, icustay_id
+order by subject_id, hadm_id, icustay_id;
