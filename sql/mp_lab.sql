@@ -34,7 +34,7 @@ with pvt as
 	        when itemid = 51300 then 'WBC'
 	        when itemid = 51301 then 'WBC' else null end as label
 	       
-	    -- Exclude values in unacceptable range    
+	    -- Add in some sanity checks on the values   
 		, case when itemid = 50868 and valuenum > 10000 then null -- mEq/L 'ANION GAP'
 			when itemid = 50862 and valuenum >    10 then null -- g/dL 'ALBUMIN'
 			when itemid = 51144 and valuenum <     0 then null -- immature band forms, %
