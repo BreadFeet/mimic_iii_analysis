@@ -16,7 +16,7 @@ with uo as
 (
 	select co.icustay_id
 		, ceil(extract(epoch from oe.charttime - co.intime)/60.0/60.0)::smallint as hr
-		, case when oe.itemid = 227489 then (-1) * oe.value else oe.value end as UrineOutput
+		, case when oe.itemid = 227488 and oe.value > 0 then (-1) * oe.value else oe.value end as UrineOutput
 	from mp_cohort co inner join outputevents oe
 		on co.icustay_id = oe.icustay_id
 	where co.excluded = 0
