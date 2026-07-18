@@ -18,13 +18,13 @@ with pvt as
 		, ceil(extract(epoch from le.charttime - co.intime)/60.0/60.0)::smallint as hr
 		, case when itemid = 50868 then 'ANION GAP'
 	        when itemid = 50862 then 'ALBUMIN'
-	        when itemid = 51144 then 'BANDS'
+	        when itemid = 51144 then 'BANDS'       -- Band Neutrophils: immature neutrophils
 	        when itemid = 50882 then 'BICARBONATE'
-	        when itemid = 50885 then 'BILIRUBIN'
-	        when itemid = 50912 then 'CREATININE'
-	        when itemid = 50902 then 'CHLORIDE'
+	        when itemid = 50885 then 'BILIRUBIN'   -- Breakdown product of Hemoglobin produced in the liver
+	        when itemid = 50912 then 'CREATININE'  -- Muscle metabolism waste product cleared by kidneys
+	        when itemid = 50902 then 'CHLORIDE'    -- Major blood electrolyte
 	        when itemid = 50931 then 'GLUCOSE'
-	        when itemid = 51221 then 'HEMATOCRIT'
+	        when itemid = 51221 then 'HEMATOCRIT'  -- % of Red Blood Cells Volume
 	        when itemid = 51222 then 'HEMOGLOBIN'
 	        when itemid = 50813 then 'LACTATE'
 	        when itemid = 51265 then 'PLATELET'
@@ -40,8 +40,8 @@ with pvt as
 	    -- Add in some sanity checks on the values   
 		, case when itemid = 50868 and valuenum > 10000 then null -- mEq/L 'ANION GAP'
 			when itemid = 50862 and valuenum >    10 then null -- g/dL 'ALBUMIN'
-			when itemid = 51144 and valuenum <     0 then null -- immature band forms, %
-			when itemid = 51144 and valuenum >   100 then null -- immature band forms, %
+			when itemid = 51144 and valuenum <     0 then null -- %, 'Immature Band Forms'
+			when itemid = 51144 and valuenum >   100 then null -- %, 'Immature Band Forms'
 			when itemid = 50882 and valuenum > 10000 then null -- mEq/L 'BICARBONATE'
 			when itemid = 50885 and valuenum >   150 then null -- mg/dL 'BILIRUBIN'
 			when itemid = 50912 and valuenum >   150 then null -- mg/dL 'CREATININE'
