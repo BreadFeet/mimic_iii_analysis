@@ -30,7 +30,7 @@ with uo as
 		    40715, -- Urine Out Suprapubic Catheter
 		    40473, -- Urine Out IleoConduit (through stoma)
 		    40085, -- Urine Out Incontinent
-		    40086, -- Urine Out Incontinent
+		    40086, -- Drain Out #2 Pigtail Catheter (through skin)
 		    40057, -- Urine Out Rt Nephrostomy
 		    40056, -- Urine Out Lt Nephrostomy
 		    40405, -- Urine Out Other
