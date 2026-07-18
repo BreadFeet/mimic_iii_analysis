@@ -5,6 +5,9 @@
 -----------------------
 -- Extract patients' lab results
 
+drop table if exists mp_lab cascade;
+create table mp_lab as
+
 -----------------------
 -- Pivot table
 -----------------------
