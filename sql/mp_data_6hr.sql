@@ -7,30 +7,30 @@ drop table if exists mp_data_6hr cascade;
 create table mp_data_6hr as
 
 select mp_data.subject_id, mp_data.hadm_id, mp_data.icustay_id
-	, max(dbsource) as dbsource
-	
-	-- Ground truth
-	-- These values are from mp_cohort, so all the values are the same for the same icustay_id
-	, max(expire_flag) as expire_flag
-	, max(hospital_expire_flag) as hospital_expire_flag
-	, max(deathtime_hours) as deathtime_hours
-	, max(hosp_deathtime_hours) as hosp_deathtime_hours
-	
-	-- Demographic/static features
-	, max(age) as age
-	, max(gender) as gender
-	, max(ethnicity) as ethnicity
-	, max(admission_type) as admission_type
-	, max(icustay_num) as icustay_num
-	
-	-- Vital values
-	-- These values are from mp_data, so values are different by hr inside the same icustay_id
-	, avg(heartrate) as heartrate_mean
-	, avg(sysbp) as sysbp_mean
-	, avg(diabp) as diabp_mean
-	, avg(meanbp) as meanbp_mean
-	, avg(resprate) as resprate_mean
-	, max(heartrate) as heartrate_max
+	  , max(dbsource) as dbsource
+	  
+	  -- Ground truth
+	  -- These values are from mp_cohort, so all the values are the same for the same icustay_id
+	  , max(expire_flag) as expire_flag
+	  , max(hospital_expire_flag) as hospital_expire_flag
+	  , max(deathtime_hours) as deathtime_hours
+	  , max(hosp_deathtime_hours) as hosp_deathtime_hours
+	  
+	  -- Demographic/static features
+	  , max(age) as age
+	  , max(gender) as gender
+	  , max(ethnicity) as ethnicity
+	  , max(admission_type) as admission_type
+	  , max(icustay_num) as icustay_num
+	  
+	  -- Vital values
+	  -- These values are from mp_data, so values are different by hr inside the same icustay_id
+	  , avg(heartrate) as heartrate_mean
+	  , avg(sysbp) as sysbp_mean
+	  , avg(diabp) as diabp_mean
+	  , avg(meanbp) as meanbp_mean
+	  , avg(resprate) as resprate_mean
+	  , max(heartrate) as heartrate_max
     , max(sysbp) as sysbp_max
     , max(diabp) as diabp_max
     , max(meanbp) as meanbp_max 
@@ -132,7 +132,6 @@ select mp_data.subject_id, mp_data.hadm_id, mp_data.icustay_id
     , min(bun) as bun_min
     , min(wbc) as wbc_min  
     
-    
     -- GCS values
     , avg(gcs) as gcs_mean
   	, avg(gcseyes) as gcseyes_mean
@@ -145,15 +144,14 @@ select mp_data.subject_id, mp_data.hadm_id, mp_data.icustay_id
     , max(gcsmotor) as gcsmotor_max
     , max(endotrachflag) as endotrachflag_max
     , min(gcs) as gcs_min
-	, min(gcseyes) as gcseyes_min
-	, min(gcsverbal) as gcsverbal_min
-	, min(gcsmotor) as gcsmotor_min
-	, min(endotrachflag) as endotrachflag_min
-	
-	-- Urine output value
-	, sum(urineoutput) as urineoutput
+	  , min(gcseyes) as gcseyes_min
+	  , min(gcsverbal) as gcsverbal_min
+	  , min(gcsmotor) as gcsmotor_min
+	  , min(endotrachflag) as endotrachflag_min
+	  
+	  -- Urine output value
+	  , sum(urineoutput) as urineoutput
     
-
 from mp_data inner join mp_cohort
 	using (icustay_id)
 where hr >= 0 and hr <= 6
