@@ -57,7 +57,7 @@ icu as
 -----------------------
 select 
 	ie.subject_id, ie.hadm_id, ie.icustay_id, ie.dbsource
-	, ce. intime_hr as intime, ce.outtime_hr as outtime 
+	, ce.intime_hr as intime, ce.outtime_hr as outtime 
 	, round((cast(adm.admittime as date) - cast(pat.dob as date)) / 365.242, 4) as age
 	, pat.gender
 	, adm.ethnicity
