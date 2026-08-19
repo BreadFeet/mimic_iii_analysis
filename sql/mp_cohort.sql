@@ -73,7 +73,7 @@ select
 	--- When patients died in the hospital
 	, ceil(extract(epoch from (adm.deathtime - ce.intime_hr))/60.0/60.0) as hosp_deathtime_hours
 	--- Regardless patients died in or outside of the hospital
-	, ceil(extract(epoch from (pat.dod - intime))/60.0/60.0) as deathtime_hours
+	, ceil(extract(epoch from (pat.dod - ce.intime_hr))/60.0/60.0) as deathtime_hours
 	, adm.deathtime as deathtime_check
 	
 	-- Exclusions
