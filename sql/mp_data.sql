@@ -10,7 +10,7 @@ create table mp_data as
 
 select 
 	  mp.subject_id, mp.hadm_id, mp.icustay_id, mp.hr
-	, vi. HeartRate
+	, vi.HeartRate
 	, vi.SysBP
 	, vi.DiaBP
 	, vi.MeanBP

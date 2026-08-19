@@ -19,7 +19,7 @@ with ce as
 		-- Add in some sanity checks on the values & Pivot itemid
 		, case when itemid in (211, 220045) and valuenum > 0 and valuenum < 300 then valuenum else null end as HeartRate
 		, case when itemid in (51, 442, 455, 6701, 220179, 220050) and valuenum > 0 and valuenum < 400 then valuenum else null end as SysBP
-		, case when itemid in (8368, 8440, 8441, 8555, 220180, 220051) and valuenum >0 and valuenum <300 then valuenum else null end as DiaBP
+		, case when itemid in (8368, 8440, 8441, 8555, 220180, 220051) and valuenum > 0 and valuenum < 300 then valuenum else null end as DiaBP
 		, case when itemid in (52, 6702, 443, 456, 220052, 220181, 225312) and valuenum > 0 and valuenum < 300 then valuenum else null end as MeanBP
 		, case when itemid in (618, 615, 220210, 224690) and valuenum >0 and valuenum < 70 then valuenum else null end as RespRate
 		, case when itemid in (646, 220277) and valuenum > 0 and valuenum <= 100 then valuenum else null end as SpO2

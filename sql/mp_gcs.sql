@@ -15,7 +15,7 @@
 
 
 drop table if exists mp_gcs cascade;
--- create table mp_gcs as
+create table mp_gcs as
 
 -----------------------
 -- Pivot table
